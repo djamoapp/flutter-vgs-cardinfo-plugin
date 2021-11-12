@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:vgscardinfo/models/vgs_card_info_config.dart';
 
@@ -47,40 +49,42 @@ class VgscardInfoView extends StatelessWidget {
   Widget _vgsCardInfoWidgetAndroid(Map<String, dynamic> creationParams) {
     final String viewType = vgsCardInfoViewType;
 
-    return AndroidView(
+    return
+
+        // AndroidView(
+        //   viewType: viewType,
+        //   layoutDirection: TextDirection.ltr,
+        //   creationParams: creationParams,
+        //   creationParamsCodec: const StandardMessageCodec(),
+        //   onPlatformViewCreated: (id) {
+        //     print("onPlatformViewCreated: $id");
+        //   },
+        // );
+
+        PlatformViewLink(
       viewType: viewType,
-      layoutDirection: TextDirection.ltr,
-      creationParams: creationParams,
-      creationParamsCodec: const StandardMessageCodec(),
-      onPlatformViewCreated: (id) {
-        print("onPlatformViewCreated: $id");
+      surfaceFactory:
+          (BuildContext context, PlatformViewController controller) {
+        return AndroidViewSurface(
+          controller: controller as AndroidViewController,
+          gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
+          hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+        );
+      },
+      onCreatePlatformView: (PlatformViewCreationParams params) {
+        return PlatformViewsService.initSurfaceAndroidView(
+          id: params.id,
+          viewType: viewType,
+          layoutDirection: TextDirection.ltr,
+          creationParams: creationParams,
+          creationParamsCodec: StandardMessageCodec(),
+          onFocus: () {
+            params.onFocusChanged(true);
+          },
+        )
+          ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+          ..create();
       },
     );
-
-    // return PlatformViewLink(
-    //   viewType: viewType,
-    //   surfaceFactory:
-    //       (BuildContext context, PlatformViewController controller) {
-    //     return AndroidViewSurface(
-    //       controller: controller as AndroidViewController,
-    //       gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
-    //       hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-    //     );
-    //   },
-    //   onCreatePlatformView: (PlatformViewCreationParams params) {
-    //     return PlatformViewsService.initSurfaceAndroidView(
-    //       id: params.id,
-    //       viewType: viewType,
-    //       layoutDirection: TextDirection.ltr,
-    //       creationParams: creationParams,
-    //       creationParamsCodec: StandardMessageCodec(),
-    //       onFocus: () {
-    //         params.onFocusChanged(true);
-    //       },
-    //     )
-    //       ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
-    //       ..create();
-    //   },
-    // );
   }
 }
