@@ -7,7 +7,8 @@ Add the dependency in your pubspec.yaml
 
 ```yaml
 vgscardinfo:
-git: https://github.com/djamoapp/flutter-vgs-cardinfo-plugin.git
+    git:
+      url: git://github.com/djamoapp/flutter-vgs-cardinfo-plugin.git
 ```
 
 ## Widgets Usage
