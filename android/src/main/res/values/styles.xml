@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DefautStyle" parent="">
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="fontFamily">@font/futura_pt_medium</item>
+        <item name="android:fontFamily">@font/futura_pt_medium</item>
+    </style>
+    <style name="MediumTextStyle" parent="">
+        <item name="fontFamily">@font/futura_pt_medium</item>
+        <item name="android:fontFamily">@font/futura_pt_medium</item>
+    </style>
+</resources>

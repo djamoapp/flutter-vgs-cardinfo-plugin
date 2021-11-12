@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Titulaire de la carte"
+            android:textColor="@color/app_grey_color"
+            android:textSize="15dp"
+            android:fontFamily="@font/futura_pt_medium"
+            />
+
+        <com.verygoodsecurity.vgsshow.widget.VGSTextView
+            android:id="@+id/NameField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentPath="name"
+            app:gravity="left"
+            app:hint="..."
+            app:textColor="@android:color/black"
+            app:textSize="18dp"
+            style="@style/MediumTextStyle" >
+
+        </com.verygoodsecurity.vgsshow.widget.VGSTextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Numéro de carte"
+                android:textColor="@color/app_grey_color"
+                android:textSize="15dp"
+                android:fontFamily="@font/futura_pt_medium" />
+
+            <com.verygoodsecurity.vgsshow.widget.VGSTextView
+                android:id="@+id/PanField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentPath="pan"
+                app:gravity="left"
+                app:hint="..."
+                app:textColor="@android:color/black"
+                app:textSize="18dp"
+                style="@style/MediumTextStyle">
+
+            </com.verygoodsecurity.vgsshow.widget.VGSTextView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/CopyPanButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/ic_baseline_content_copy_24"
+                android:text="Copier"
+                android:textColor="@color/app_primary_color"
+                android:textColorLink="@color/app_primary_color"
+                android:fontFamily="@font/futura_pt_medium"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date d’expiration"
+                android:textColor="@color/app_grey_color"
+                android:textSize="15dp"
+                android:fontFamily="@font/futura_pt_medium"/>
+
+            <com.verygoodsecurity.vgsshow.widget.VGSTextView
+                android:id="@+id/ExpiryDateField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentPath="expireDate"
+                app:gravity="left"
+                app:hint="..."
+                app:textColor="@android:color/black"
+                app:textSize="18dp"
+                style="@style/MediumTextStyle">
+
+            </com.verygoodsecurity.vgsshow.widget.VGSTextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CVV"
+                android:textColor="@color/app_grey_color"
+                android:textSize="15dp"
+                android:fontFamily="@font/futura_pt_medium"/>
+
+            <com.verygoodsecurity.vgsshow.widget.VGSTextView
+                android:id="@+id/CVVField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentPath="cvv"
+                app:gravity="left"
+                app:hint="..."
+                app:textColor="@android:color/black"
+                app:textSize="18dp"
+                style="@style/MediumTextStyle">
+
+            </com.verygoodsecurity.vgsshow.widget.VGSTextView>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
