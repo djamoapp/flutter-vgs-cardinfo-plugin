@@ -19,11 +19,11 @@ VgsTextView(
   key: Key("<token_key>"),
   id: "<token_key>",
   token: "<pan_token>",
-  vaultId: VAULT_ID,
-  path: DJAMO_VGS_PATH,
+  vaultId: VAULT_ID, // Refers to a constant declaration
+  path: DJAMO_VGS_PATH, // Refers to a constant declaration
 ))
 ```
-This widget comes with a Copytoclipboard Method
+This widget comes with the **copyContent** method that copy the content of a VgsTextView rendered
 ```dart
 VgsTextView.copyContent(id: "<token_key>");
 
@@ -33,12 +33,12 @@ VgsTextView.copyContent(id: "<token_key>");
 This widget displays all VGS card data in one view
 ```dart
 VgsCardInfoConfig _vgsCardInfoConfig = VgsCardInfoConfig(
-    cvvToken: '<cvvToken>',
-    expiryDateToken: '<expiryDateToken>',
-    nameToken: '<nameToken>',
-    panToken: '<panToken>',
-    vgsPath: DJAMO_VGS_PATH,
-    vgsVaultId: VAULT_ID,
+    cvvToken: "<cvvToken>",
+    expiryDateToken: "<expiryDateToken>",
+    nameToken: "<nameToken>",
+    panToken: "<panToken>",
+    vgsPath: DJAMO_VGS_PATH, // Refers to a constant declaration
+    vgsVaultId: VAULT_ID, // Refers to a constant declaration
   );
   
 VgscardInfoView(
