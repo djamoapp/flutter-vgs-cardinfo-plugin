@@ -10,7 +10,7 @@ vgscardinfo:
 git: djamoapp/flutter-vgs-cardinfo-plugin
 ```
 
-## Usage
+## Widgets Usage
 ### VgsTextView 
 This widget displays only one VGS card data using the token.
 ```dart
@@ -21,6 +21,11 @@ VgsTextView(
   vaultId: VAULT_ID,
   path: DJAMO_VGS_PATH,
 ))
+```
+This widget comes with a Copytoclipboard Method
+```dart
+VgsTextView.copyContent(id: "<token_key>");
+
 ```
 
 ### VgscardInfoView
@@ -39,7 +44,6 @@ VgscardInfoView(
   vgsCardInfoConfig: _vgsCardInfoConfig,
 ),
 ```
-
 ## Support
 This project is a starting point for a Flutter
 [plug-in package](https://flutter.dev/developing-packages/),
