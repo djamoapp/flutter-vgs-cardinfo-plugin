@@ -13,6 +13,7 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.platform.PlatformView
+import android.graphics.Color
 
 internal class VgsTextView(
         context: Context,
@@ -53,6 +54,7 @@ internal class VgsTextView(
         vgsTextView = VGSTextView(context)
         vgsTextView.setContentPath(id)
         vgsTextView.setHint("...")
+        vgsTextView.setBackgroundColor(Color.parseColor("#ffffff"));
         //vgsTextView.setHintTextColor(Color.rgb(255, 255, 255))
         vgsTextView.addTransformationRegex("(\\d{4})(\\d{4})(\\d{4})(\\d{4})".toRegex(), "$1 $2 $3 $4")
         vgsShow.subscribe(vgsTextView)
