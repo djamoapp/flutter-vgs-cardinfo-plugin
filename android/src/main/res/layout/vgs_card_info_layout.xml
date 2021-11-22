@@ -4,36 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@android:color/white"
-    >
+    android:background="@android:color/transparent"
+    android:minHeight="100dp"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="24dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/NameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8px"
+            android:fontFamily="futura_pt_bold"
+            android:textStyle="normal"
             android:text="Titulaire de la carte"
             android:textColor="@color/app_grey_color"
-            android:textSize="15dp"
-            android:fontFamily="@font/futura_pt_medium"
-            />
+            android:textSize="15dp" />
 
         <com.verygoodsecurity.vgsshow.widget.VGSTextView
             android:id="@+id/NameField"
+            style="@style/MediumTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:contentPath="name"
             app:gravity="left"
             app:hint="..."
             app:textColor="@android:color/black"
-            app:textSize="18dp"
-            style="@style/MediumTextStyle" >
+            app:textSize="18dp">
 
         </com.verygoodsecurity.vgsshow.widget.VGSTextView>
 
@@ -42,34 +43,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="24dp"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight=".5"
+            android:layout_marginRight="16dp"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/PanTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8px"
+                android:fontFamily="@font/futura_pt_medium"
                 android:text="Numéro de carte"
                 android:textColor="@color/app_grey_color"
-                android:textSize="15dp"
-                android:fontFamily="@font/futura_pt_medium" />
+                android:textSize="15dp" />
 
             <com.verygoodsecurity.vgsshow.widget.VGSTextView
                 android:id="@+id/PanField"
+                style="@style/MediumTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:contentPath="pan"
                 app:gravity="left"
                 app:hint="..."
                 app:textColor="@android:color/black"
-                app:textSize="18dp"
-                style="@style/MediumTextStyle">
+                app:textSize="18dp">
 
             </com.verygoodsecurity.vgsshow.widget.VGSTextView>
 
@@ -79,7 +81,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight=".5"
+            android:gravity="bottom|start"
             android:orientation="vertical">
 
             <Button
@@ -88,10 +90,11 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:drawableTop="@drawable/ic_baseline_content_copy_24"
+                android:fontFamily="@font/futura_pt_medium"
                 android:text="Copier"
                 android:textColor="@color/app_primary_color"
                 android:textColorLink="@color/app_primary_color"
-                android:fontFamily="@font/futura_pt_medium"/>
+                android:textSize="12dp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -104,28 +107,29 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight=".5"
+            android:layout_weight=".2"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/ExpiryDateTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8px"
+                android:fontFamily="@font/futura_pt_medium"
                 android:text="Date d’expiration"
                 android:textColor="@color/app_grey_color"
-                android:textSize="15dp"
-                android:fontFamily="@font/futura_pt_medium"/>
+                android:textSize="15dp" />
 
             <com.verygoodsecurity.vgsshow.widget.VGSTextView
                 android:id="@+id/ExpiryDateField"
+                style="@style/MediumTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:contentPath="expireDate"
                 app:gravity="left"
                 app:hint="..."
                 app:textColor="@android:color/black"
-                app:textSize="18dp"
-                style="@style/MediumTextStyle">
+                app:textSize="18dp">
 
             </com.verygoodsecurity.vgsshow.widget.VGSTextView>
 
@@ -134,28 +138,29 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight=".5"
+            android:layout_weight=".8"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/CVVTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8px"
+                android:fontFamily="@font/futura_pt_medium"
                 android:text="CVV"
                 android:textColor="@color/app_grey_color"
-                android:textSize="15dp"
-                android:fontFamily="@font/futura_pt_medium"/>
+                android:textSize="15dp" />
 
             <com.verygoodsecurity.vgsshow.widget.VGSTextView
                 android:id="@+id/CVVField"
+                style="@style/MediumTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:contentPath="cvv"
                 app:gravity="left"
                 app:hint="..."
                 app:textColor="@android:color/black"
-                app:textSize="18dp"
-                style="@style/MediumTextStyle">
+                app:textSize="18dp">
 
             </com.verygoodsecurity.vgsshow.widget.VGSTextView>
         </LinearLayout>

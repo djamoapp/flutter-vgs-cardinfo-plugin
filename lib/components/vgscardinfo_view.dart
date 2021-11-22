@@ -9,13 +9,17 @@ import '../constants.dart';
 
 class VgscardInfoView extends StatelessWidget {
   final VgsCardInfoConfig vgsCardInfoConfig;
-  const VgscardInfoView({Key? key, required this.vgsCardInfoConfig})
-      : super(key: key);
+  final double viewHeight;
+  const VgscardInfoView({
+    Key? key,
+    required this.vgsCardInfoConfig,
+    this.viewHeight = 190,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 180,
+      height: this.viewHeight,
       child: _showVgsInfoWidget(),
     );
   }
@@ -49,19 +53,7 @@ class VgscardInfoView extends StatelessWidget {
   Widget _vgsCardInfoWidgetAndroid(Map<String, dynamic> creationParams) {
     final String viewType = vgsCardInfoViewType;
 
-    return
-
-        // AndroidView(
-        //   viewType: viewType,
-        //   layoutDirection: TextDirection.ltr,
-        //   creationParams: creationParams,
-        //   creationParamsCodec: const StandardMessageCodec(),
-        //   onPlatformViewCreated: (id) {
-        //     print("onPlatformViewCreated: $id");
-        //   },
-        // );
-
-        PlatformViewLink(
+    return PlatformViewLink(
       viewType: viewType,
       surfaceFactory:
           (BuildContext context, PlatformViewController controller) {
