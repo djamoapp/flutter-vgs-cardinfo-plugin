@@ -26,7 +26,7 @@ internal class VsCardInfoView(context: Context, id: Int, creationParams: Map<Str
     private val vgsVaultId : String = creationParams!!.get("vgs_vault_id")!!.toString()
     private val vgsPath : String = creationParams!!.get("vgs_path")!!.toString()
     private val panToken : String = creationParams!!.get("pan_token")!!.toString()
-    private val nameToken : String = creationParams!!.get("name_token")!!.toString()
+    // private val nameToken : String = creationParams!!.get("name_token")!!.toString()
     private val cvvToken : String = creationParams!!.get("cvv_token")!!.toString()
     private val expiryDateToken : String = creationParams!!.get("expiry_date_token")!!.toString()
     private val env : String = creationParams!!.get("environment")!!.toString()
@@ -42,13 +42,13 @@ internal class VsCardInfoView(context: Context, id: Int, creationParams: Map<Str
 
     // Get V
     private val panField = rootView.findViewById<VGSTextView>(R.id.PanField)
-    private val nameField = rootView.findViewById<VGSTextView>(R.id.NameField)
+    // private val nameField = rootView.findViewById<VGSTextView>(R.id.NameField)
     private val cvvField = rootView.findViewById<VGSTextView>(R.id.CVVField)
     private val expiryDateField = rootView.findViewById<VGSTextView>(R.id.ExpiryDateField)
     private val copyPanButton= rootView.findViewById<Button>(R.id.CopyPanButton);
 
     // Get TextViews
-    private  val nameTextView = rootView.findViewById<TextView>(R.id.NameTextView)
+    // private  val nameTextView = rootView.findViewById<TextView>(R.id.NameTextView)
     private  val panTextView = rootView.findViewById<TextView>(R.id.PanTextView)
     private  val expiryDateTextView = rootView.findViewById<TextView>(R.id.ExpiryDateTextView)
     private  val cvvTextView = rootView.findViewById<TextView>(R.id.CVVTextView)
@@ -68,14 +68,14 @@ internal class VsCardInfoView(context: Context, id: Int, creationParams: Map<Str
     init {
 
         // Set TypeFace to VgsTextViews
-        nameTextView.typeface =  futuraPTBook
+        // nameTextView.typeface =  futuraPTBook
         panTextView.typeface = futuraPTBook
         expiryDateTextView.typeface = futuraPTBook
         cvvTextView.typeface = futuraPTBook
         copyPanButton.typeface = futuraPTBook
 
         // Set TypeFace to TextViews
-        nameField.setTypeface(futuraPTMedium)
+        // nameField.setTypeface(futuraPTMedium)
         panField.setTypeface(futuraPTMedium)
         expiryDateField.setTypeface(futuraPTMedium)
         cvvField.setTypeface(futuraPTMedium)
@@ -85,7 +85,7 @@ internal class VsCardInfoView(context: Context, id: Int, creationParams: Map<Str
                 VGSRequest.Builder(vgsPath, VGSHttpMethod.POST)
                         .body(mapOf(
                                 "pan" to panToken,
-                                "name" to nameToken,
+                                // "name" to nameToken,
                                 "expireDate" to expiryDateToken,
                                 "cvv" to cvvToken
                         ))
@@ -97,7 +97,7 @@ internal class VsCardInfoView(context: Context, id: Int, creationParams: Map<Str
 
         // Subscribe view
         vgsShow.subscribe(panField)
-        vgsShow.subscribe(nameField)
+        // vgsShow.subscribe(nameField)
         vgsShow.subscribe(cvvField)
         vgsShow.subscribe(expiryDateField)
 

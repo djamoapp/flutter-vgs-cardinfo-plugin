@@ -8,7 +8,7 @@
     android:minHeight="100dp"
     android:orientation="vertical">
 
-    <LinearLayout
+   <!--  <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
@@ -39,7 +39,7 @@
         </com.verygoodsecurity.vgsshow.widget.VGSTextView>
 
     </LinearLayout>
-
+-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                 app:gravity="left"
                 app:hint="..."
                 app:textColor="@android:color/black"
-                app:textSize="18dp">
+                app:textSize="19dp">
 
             </com.verygoodsecurity.vgsshow.widget.VGSTextView>
 
@@ -129,7 +129,7 @@
                 app:gravity="left"
                 app:hint="..."
                 app:textColor="@android:color/black"
-                app:textSize="18dp">
+                app:textSize="19dp">
 
             </com.verygoodsecurity.vgsshow.widget.VGSTextView>
 
@@ -160,7 +160,7 @@
                 app:gravity="left"
                 app:hint="..."
                 app:textColor="@android:color/black"
-                app:textSize="18dp">
+                app:textSize="19dp">
 
             </com.verygoodsecurity.vgsshow.widget.VGSTextView>
         </LinearLayout>
