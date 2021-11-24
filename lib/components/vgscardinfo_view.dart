@@ -13,14 +13,16 @@ class VgscardInfoView extends StatelessWidget {
   const VgscardInfoView({
     Key? key,
     required this.vgsCardInfoConfig,
-    this.viewHeight = 190,
+    this.viewHeight = 110,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: this.viewHeight,
-      child: _showVgsInfoWidget(),
+    return SafeArea(
+      child: Container(
+        height: this.viewHeight,
+        child: _showVgsInfoWidget(),
+      ),
     );
   }
 

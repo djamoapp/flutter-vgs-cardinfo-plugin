@@ -18,7 +18,7 @@ class VgsCardInfoView: NSObject, FlutterPlatformView {
     let argData : Dictionary<String, Any>
     let vgsShow : VGSShow
     private var _panLabel : VGSLabel
-    let copyPanButton = UIButton()
+    let copyButtonLabel = UILabel()
     
     init(
         frame: CGRect,
@@ -54,28 +54,34 @@ class VgsCardInfoView: NSObject, FlutterPlatformView {
     }
     
     func createNativeView(view _view: UIView){
-                
+        
+        //
         UILabel.appearance(whenContainedInInstancesOf: [UIView.self]).textColor = .black
         UILabel.appearance(whenContainedInInstancesOf: [UIView.self]).font = UIFont.FuturaPT(.light, size: 15)
 
         // UI Text Widgets
-        let nameText = UILabel()
-        nameText.text = "Titulaire de la carte"
-        nameText.textColor = AppColors.greyColor
+
+//        let nameText = UILabel()
+//        nameText.text = "Titulaire de la carte"
+//        nameText.textColor = AppColors.greyColor
         
         let panText = UILabel()
         panText.text = "Numéro de carte"
         panText.textColor = AppColors.greyColor
         
-        copyPanButton.frame = CGRect(x: 15, y: 50, width: 300, height: 500)
-        copyPanButton.setTitle("Copier", for: .normal)
-        copyPanButton.titleLabel?.font = UIFont.FuturaPT(.medium, size: 15)
-        copyPanButton.backgroundColor = UIColor.clear
-        copyPanButton.semanticContentAttribute = .forceLeftToRight
-        copyPanButton.setTitleColor(AppColors.blueColor, for: .normal)
-        copyPanButton.setImage(UIImage(named: "IconCopy", in:Bundle.init(identifier: vgsCardviewBundleId), compatibleWith: nil), for: .normal)
-        copyPanButton.addTarget(self, action: #selector(copyPan), for: .touchUpInside)
-
+        
+        copyButtonLabel.text = "Copier"
+        copyButtonLabel.textColor = AppColors.blueColor
+        copyButtonLabel.font = UIFont.FuturaPT(.medium, size: 12)
+        var copyIcon = UIImage(named: "IconCopy", in:Bundle(identifier: vgsCardviewBundleId), compatibleWith: nil)
+        copyIcon = copyIcon?.resize(targetSize: CGSize(width: 24, height: 24))
+        let buttonImage = UIImageView(image: copyIcon)
+        buttonImage.frame =  CGRect(x: 0, y: 0, width: 20, height: 20)
+        let copyButton = UIStackView(arrangedSubviews: [buttonImage, copyButtonLabel])
+        copyButton.axis = .vertical
+        buttonImage.contentMode = .scaleAspectFit
+        copyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.copyPan)))
+        
         let cvvText = UILabel()
         cvvText.text = "CVV"
         cvvText.textColor = AppColors.greyColor
@@ -85,8 +91,8 @@ class VgsCardInfoView: NSObject, FlutterPlatformView {
         expiryDateText.textColor = AppColors.greyColor
         
         _panLabel.contentPath = "pan"
-        _panLabel.font = UIFont.FuturaPT(.medium, size: 18)
-        _panLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        _panLabel.font = UIFont.FuturaPT(.medium, size: 19)
+        _panLabel.widthAnchor.constraint(equalToConstant: 210).isActive = true
         
         do {
             let regex = try NSRegularExpression(pattern: "(\\d{4})(\\d{4})(\\d{4})(\\d{4})", options: [])
@@ -95,72 +101,80 @@ class VgsCardInfoView: NSObject, FlutterPlatformView {
             assertionFailure("invalid regex, error: \(error)")
         }
                 
-        let nameLabel = VGSLabel()
-        nameLabel.contentPath = "name"
-        nameLabel.font = UIFont.FuturaPT(.medium, size: 18)
+//        let nameLabel = VGSLabel()
+//        nameLabel.contentPath = "name"
+//        nameLabel.font = UIFont.FuturaPT(.medium, size: 18)
         
         let expireDateLabel = VGSLabel()
         expireDateLabel.contentPath = "expireDate"
-        expireDateLabel.font = UIFont.FuturaPT(.medium, size: 18)
+        expireDateLabel.font = UIFont.FuturaPT(.medium, size: 19)
         
         let cvvLabel = VGSLabel()
         cvvLabel.contentPath = "cvv"
-        cvvLabel.font = UIFont.FuturaPT(.medium, size: 18)
+        cvvLabel.font = UIFont.FuturaPT(.medium, size: 19)
 
-        (nameLabel.placeholder, _panLabel.placeholder, expireDateLabel.placeholder, cvvLabel.placeholder) = ("...", "...", "...", "...")
-        (nameLabel.borderWidth, _panLabel.borderWidth, expireDateLabel.borderWidth, cvvLabel.borderWidth) = (0, 0, 0, 0)
+        (/*nameLabel.placeholder, */
+         _panLabel.placeholder, expireDateLabel.placeholder, cvvLabel.placeholder) = (/*"...,"*/
+            "...", "...", "...")
+        (/* nameLabel.borderWidth,*/ _panLabel.borderWidth, expireDateLabel.borderWidth, cvvLabel.borderWidth) = (/*0,*/ 0, 0, 0)
         
         // Create payload
         let panToken = self.argData["pan_token"] as? String
-        let nameToken = self.argData["name_token"] as? String
+//        let nameToken = self.argData["name_token"] as? String
         let cvvToken = self.argData["cvv_token"] as? String
         let expireDateToken = self.argData["expiry_date_token"] as? String
         
         let payload = [
             "pan" : panToken,
-            "name" : nameToken,
+//            "name" : nameToken,
             "cvv" : cvvToken,
             "expireDate" : expireDateToken
         ]
         
         // Subscribe
         vgsShow.subscribe(_panLabel)
-        vgsShow.subscribe(nameLabel)
+//        vgsShow.subscribe(nameLabel)
         vgsShow.subscribe(expireDateLabel)
         vgsShow.subscribe(cvvLabel)
 
         // UI Arrange
-        let nameStackView = UIStackView(arrangedSubviews: [nameText, nameLabel])
-        nameStackView.spacing = 5
-        nameStackView.axis = .vertical
+        
+//        let nameStackView = UIStackView(arrangedSubviews: [nameText, nameLabel])
+//        nameStackView.axis = .vertical
+//        nameStackView.spacing = 8
         
         let panStackView = UIStackView(arrangedSubviews: [panText, _panLabel])
-        nameStackView.spacing = 5
         panStackView.axis = .vertical
+        panStackView.spacing = 8
         
         let expiryDateStackView = UIStackView(arrangedSubviews: [expiryDateText, expireDateLabel])
-        nameStackView.spacing = 5
         expiryDateStackView.axis = .vertical
+        expiryDateStackView.spacing = 8
         
         let cvvStackView = UIStackView(arrangedSubviews: [cvvText, cvvLabel])
-        nameStackView.spacing = 5
         cvvStackView.axis = .vertical
+        cvvStackView.spacing = 8
         
-        let rowPanAndCopyButton = UIStackView(arrangedSubviews: [panStackView, self.copyPanButton])
+        let rowPanAndCopyButton = UIStackView(arrangedSubviews: [panStackView, copyButton])
         rowPanAndCopyButton.axis = .horizontal
         rowPanAndCopyButton.spacing = 12
         rowPanAndCopyButton.distribution = .fillProportionally
+        rowPanAndCopyButton.alignment = .bottom
         
         let rowExpiryDateAndCVV = UIStackView(arrangedSubviews: [expiryDateStackView, cvvStackView])
         rowExpiryDateAndCVV.axis = .horizontal
-        rowExpiryDateAndCVV.spacing = 12
+        rowExpiryDateAndCVV.spacing = 40
         rowExpiryDateAndCVV.distribution = .fillEqually
 
-        let stackView = UIStackView.init(arrangedSubviews: [nameStackView, rowPanAndCopyButton, rowExpiryDateAndCVV])
-                stackView.axis = .vertical
-                stackView.spacing = 12
-                stackView.distribution = .fillEqually
-                stackView.translatesAutoresizingMaskIntoConstraints = false
+        let stackView = UIStackView(arrangedSubviews: [
+            /* nameStackView */ rowPanAndCopyButton, rowExpiryDateAndCVV
+        ])
+        
+        stackView.axis = .vertical
+        stackView.spacing = 24
+        stackView.distribution = .fill
+        stackView.alignment = .top
+        stackView.translatesAutoresizingMaskIntoConstraints = false
 
         // Send Request
         self.revealData(payload: payload as Dictionary<String, Any>)
@@ -169,7 +183,7 @@ class VgsCardInfoView: NSObject, FlutterPlatformView {
     
     @objc func copyPan(){
         _panLabel.copyTextToClipboard(format: .raw)
-        copyPanButton.setTitle("Copié", for: .normal)
+        copyButtonLabel.text = "Copié"
     }
     
     func revealData(payload : Dictionary<String, Any>) {

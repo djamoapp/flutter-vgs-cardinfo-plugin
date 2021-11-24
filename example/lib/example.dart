@@ -97,14 +97,13 @@ class ExampleScreen extends StatelessWidget {
               },
               child: Text("Open View"),
             ),
-
-            // Container(
-            //   margin: EdgeInsets.only(top: 15),
-            //   padding: const EdgeInsets.symmetric(horizontal: 15),
-            //   child: VgscardInfoView(
-            //     vgsCardInfoConfig: _vgsCardInfoConfig,
-            //   ),
-            // ),
+            Container(
+              margin: EdgeInsets.only(top: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: VgscardInfoView(
+                vgsCardInfoConfig: _vgsCardInfoConfig,
+              ),
+            ),
           ],
         ),
       ),
