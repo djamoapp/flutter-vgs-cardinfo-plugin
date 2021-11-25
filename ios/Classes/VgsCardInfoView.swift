@@ -12,6 +12,7 @@ import VGSShowSDK
 
 let vgsCardviewBundleId = "org.cocoapods.vgscardinfo"
 
+@available(iOS 10, *)
 class VgsCardInfoView: NSObject, FlutterPlatformView {
     
     private var _view: UIView
@@ -53,6 +54,7 @@ class VgsCardInfoView: NSObject, FlutterPlatformView {
         return _view
     }
     
+    @available(iOS 10, *)
     func createNativeView(view _view: UIView){
         
         //
@@ -74,12 +76,13 @@ class VgsCardInfoView: NSObject, FlutterPlatformView {
         copyButtonLabel.textColor = AppColors.blueColor
         copyButtonLabel.font = UIFont.FuturaPT(.medium, size: 12)
         var copyIcon = UIImage(named: "IconCopy", in:Bundle(identifier: vgsCardviewBundleId), compatibleWith: nil)
-        copyIcon = copyIcon?.resize(targetSize: CGSize(width: 24, height: 24))
-        let buttonImage = UIImageView(image: copyIcon)
-//        buttonImage.frame =  CGRect(x: 0, y: 0, width: 20, height: 20)
-        let copyButton = UIStackView(arrangedSubviews: [buttonImage, copyButtonLabel])
+        if #available(iOS 10, *){
+            copyIcon = copyIcon?.resize(targetSize: CGSize(width: 24, height: 24))
+        }
+        let copyButtonImage = UIImageView(image: copyIcon)
+        let copyButton = UIStackView(arrangedSubviews: [copyButtonImage, copyButtonLabel])
         copyButton.axis = .vertical
-        buttonImage.contentMode = .scaleAspectFit
+        copyButtonImage.contentMode = .scaleAspectFit
         copyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.copyPan)))
         
         let cvvText = UILabel()

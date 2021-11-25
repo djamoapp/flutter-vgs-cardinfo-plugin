@@ -88,9 +88,7 @@ class VgsTextView: NSObject, FlutterPlatformView {
         do {
          vgsTextView.copyTextToClipboard()
             return result(true)
-            } catch {
-                return result(false)
-            }
+        }
    }
     private func revealVGSText(with flutterMethodCall: FlutterMethodCall, result: @escaping FlutterResult)  {
         var errorInfo: [String : Any] = [:]

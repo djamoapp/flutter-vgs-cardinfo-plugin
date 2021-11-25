@@ -95,7 +95,7 @@ class ExampleScreen extends StatelessWidget {
                       );
                     });
               },
-              child: Text("Open View"),
+              child: Text("Open View in bottom Sheet"),
             ),
             Container(
               margin: EdgeInsets.only(top: 15),
