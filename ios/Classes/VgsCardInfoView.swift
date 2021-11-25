@@ -76,7 +76,7 @@ class VgsCardInfoView: NSObject, FlutterPlatformView {
         var copyIcon = UIImage(named: "IconCopy", in:Bundle(identifier: vgsCardviewBundleId), compatibleWith: nil)
         copyIcon = copyIcon?.resize(targetSize: CGSize(width: 24, height: 24))
         let buttonImage = UIImageView(image: copyIcon)
-        buttonImage.frame =  CGRect(x: 0, y: 0, width: 20, height: 20)
+//        buttonImage.frame =  CGRect(x: 0, y: 0, width: 20, height: 20)
         let copyButton = UIStackView(arrangedSubviews: [buttonImage, copyButtonLabel])
         copyButton.axis = .vertical
         buttonImage.contentMode = .scaleAspectFit
