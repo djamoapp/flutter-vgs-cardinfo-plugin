@@ -12,7 +12,6 @@ import VGSShowSDK
 
 let vgsCardviewBundleId = "org.cocoapods.vgscardinfo"
 
-@available(iOS 10, *)
 class VgsCardInfoView: NSObject, FlutterPlatformView {
     
     private var _view: UIView
@@ -54,7 +53,6 @@ class VgsCardInfoView: NSObject, FlutterPlatformView {
         return _view
     }
     
-    @available(iOS 10, *)
     func createNativeView(view _view: UIView){
         
         //
