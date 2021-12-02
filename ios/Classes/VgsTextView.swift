@@ -44,18 +44,37 @@ class VgsTextView: NSObject, FlutterPlatformView {
             vgsTextView.placeholder = "..."
             vgsTextView.translatesAutoresizingMaskIntoConstraints = false
             vgsTextView.widthAnchor.constraint(equalToConstant: 250).isActive = true
+            
             if(fieldId == "pan"){
                 do {
-                            let cardNumberPattern = "(\\d{4})(\\d{4})(\\d{4})(\\d{4})"
-                            let template = "$1 $2 $3 $4"
-                            let regex = try NSRegularExpression(pattern: cardNumberPattern, options: [])
-
-                            // Add transformation regex to your label.
+                    let cardNumberPattern = "(\\d{4})(\\d{4})(\\d{4})(\\d{4})"
+                    let template = "$1 $2 $3 $4"
+                    let regex = try NSRegularExpression(pattern: cardNumberPattern, options: [])
+                    // Add transformation regex to your label.
                     vgsTextView.addTransformationRegex(regex, template: template)
-                        } catch {
-                            assertionFailure("invalid regex, error: \(error)")
-                        }
+                } catch {
+                    assertionFailure("invalid regex, error: \(error)")
+                }
+            }else if (fieldId == "expireDate"){
+                do {
+                    vgsTextView.addTransformationRegex(try NSRegularExpression(pattern: "(\\bJAN\\b)"), template: "01")
+                    vgsTextView.addTransformationRegex(try NSRegularExpression(pattern: "(\\bFEB\\b)"), template: "02")
+                    vgsTextView.addTransformationRegex(try NSRegularExpression(pattern: "(\\bMAR\\b)"), template: "03")
+                    vgsTextView.addTransformationRegex(try NSRegularExpression(pattern: "(\\bAPR\\b)"), template: "04")
+                    vgsTextView.addTransformationRegex(try NSRegularExpression(pattern: "(\\bMAY\\b)"), template: "05")
+                    vgsTextView.addTransformationRegex(try NSRegularExpression(pattern: "(\\bJUN\\b)"), template: "06")
+                    vgsTextView.addTransformationRegex(try NSRegularExpression(pattern: "(\\bJUL\\b)"), template: "07")
+                    vgsTextView.addTransformationRegex(try NSRegularExpression(pattern: "(\\bAUG\\b)"), template: "08")
+                    vgsTextView.addTransformationRegex(try NSRegularExpression(pattern: "(\\bSEP\\b)"), template: "09")
+                    vgsTextView.addTransformationRegex(try NSRegularExpression(pattern: "(\\bOCT\\b)"), template: "10")
+                    vgsTextView.addTransformationRegex(try NSRegularExpression(pattern: "(\\bNOV\\b)"), template: "11")
+                    vgsTextView.addTransformationRegex(try NSRegularExpression(pattern: "(\\bDEC\\b)"), template: "12")
+                    vgsTextView.addTransformationRegex(try NSRegularExpression(pattern: "(\\d{2})\\-(\\d{2})\\-(\\d{2})(\\d{2})"), template: "$2/$4")
+                } catch {
+                    assertionFailure("invalid regex, error: \(error)")
+                }
             }
+            
             //Set UI
             vgsTextView.font = UIFont.systemFont(ofSize: 14)
             vgsTextView.placeholderStyle.color = .black

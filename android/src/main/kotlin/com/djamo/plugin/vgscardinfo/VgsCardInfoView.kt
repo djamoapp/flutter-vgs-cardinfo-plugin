@@ -94,12 +94,26 @@ internal class VsCardInfoView(context: Context, id: Int, creationParams: Map<Str
 
         // Data formatting
         panField.addTransformationRegex("(\\d{4})(\\d{4})(\\d{4})(\\d{4})".toRegex(), "$1 $2 $3 $4")
+        expiryDateField.addTransformationRegex("(\\bJAN\\b)".toRegex(),"01")
+        expiryDateField.addTransformationRegex("(\\bFEB\\b)".toRegex(),"02")
+        expiryDateField.addTransformationRegex("(\\bMAR\\b)".toRegex(),"03")
+        expiryDateField.addTransformationRegex("(\\bAPR\\b)".toRegex(),"04")
+        expiryDateField.addTransformationRegex("(\\bMAY\\b)".toRegex(),"05")
+        expiryDateField.addTransformationRegex("(\\bJUN\\b)".toRegex(),"06")
+        expiryDateField.addTransformationRegex("(\\bJUL\\b)".toRegex(),"07")
+        expiryDateField.addTransformationRegex("(\\bAUG\\b)".toRegex(),"08")
+        expiryDateField.addTransformationRegex("(\\bSEP\\b)".toRegex(),"09")
+        expiryDateField.addTransformationRegex("(\\bOCT\\b)".toRegex(),"10")
+        expiryDateField.addTransformationRegex("(\\bNOV\\b)".toRegex(),"11")
+        expiryDateField.addTransformationRegex("(\\bDEC\\b)".toRegex(),"12")
+        expiryDateField.addTransformationRegex("(\\d{2})\\-(\\d{2})\\-(\\d{2})(\\d{2})".toRegex(),"$2/$4")
 
         // Subscribe view
         vgsShow.subscribe(panField)
         // vgsShow.subscribe(nameField)
         vgsShow.subscribe(cvvField)
         vgsShow.subscribe(expiryDateField)
+
 
         // Handle response
         vgsShow.addOnResponseListener(object : VGSOnResponseListener {

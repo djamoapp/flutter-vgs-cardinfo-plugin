@@ -95,12 +95,6 @@ class VgsCardInfoView: NSObject, FlutterPlatformView {
         _panLabel.font = UIFont.FuturaPT(.medium, size: 19)
         _panLabel.widthAnchor.constraint(equalToConstant: 210).isActive = true
         
-        do {
-            let regex = try NSRegularExpression(pattern: "(\\d{4})(\\d{4})(\\d{4})(\\d{4})", options: [])
-            _panLabel.addTransformationRegex(regex, template:  "$1 $2 $3 $4")
-        } catch {
-            assertionFailure("invalid regex, error: \(error)")
-        }
                 
 //        let nameLabel = VGSLabel()
 //        nameLabel.contentPath = "name"
@@ -113,6 +107,28 @@ class VgsCardInfoView: NSObject, FlutterPlatformView {
         let cvvLabel = VGSLabel()
         cvvLabel.contentPath = "cvv"
         cvvLabel.font = UIFont.FuturaPT(.medium, size: 19)
+        
+        // Data formatting
+        do {
+            let regex = try NSRegularExpression(pattern: "(\\d{4})(\\d{4})(\\d{4})(\\d{4})")
+            _panLabel.addTransformationRegex(regex, template:  "$1 $2 $3 $4")
+            expireDateLabel.addTransformationRegex(try NSRegularExpression(pattern: "(\\bJAN\\b)"), template: "01")
+            expireDateLabel.addTransformationRegex(try NSRegularExpression(pattern: "(\\bFEB\\b)"), template: "02")
+            expireDateLabel.addTransformationRegex(try NSRegularExpression(pattern: "(\\bMAR\\b)"), template: "03")
+            expireDateLabel.addTransformationRegex(try NSRegularExpression(pattern: "(\\bAPR\\b)"), template: "04")
+            expireDateLabel.addTransformationRegex(try NSRegularExpression(pattern: "(\\bMAY\\b)"), template: "05")
+            expireDateLabel.addTransformationRegex(try NSRegularExpression(pattern: "(\\bJUN\\b)"), template: "06")
+            expireDateLabel.addTransformationRegex(try NSRegularExpression(pattern: "(\\bJUL\\b)"), template: "07")
+            expireDateLabel.addTransformationRegex(try NSRegularExpression(pattern: "(\\bAUG\\b)"), template: "08")
+            expireDateLabel.addTransformationRegex(try NSRegularExpression(pattern: "(\\bSEP\\b)"), template: "09")
+            expireDateLabel.addTransformationRegex(try NSRegularExpression(pattern: "(\\bOCT\\b)"), template: "10")
+            expireDateLabel.addTransformationRegex(try NSRegularExpression(pattern: "(\\bNOV\\b)"), template: "11")
+            expireDateLabel.addTransformationRegex(try NSRegularExpression(pattern: "(\\bDEC\\b)"), template: "12")
+            expireDateLabel.addTransformationRegex(try NSRegularExpression(pattern: "(\\d{2})\\-(\\d{2})\\-(\\d{2})(\\d{2})"), template: "$2/$4")
+
+        } catch {
+            assertionFailure("invalid regex, error: \(error)")
+        }
 
         (/*nameLabel.placeholder, */
          _panLabel.placeholder, expireDateLabel.placeholder, cvvLabel.placeholder) = (/*"...,"*/

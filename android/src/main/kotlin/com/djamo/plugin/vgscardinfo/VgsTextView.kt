@@ -56,7 +56,27 @@ internal class VgsTextView(
         vgsTextView.setHint("...")
         vgsTextView.setBackgroundColor(Color.parseColor("#ffffff"));
         //vgsTextView.setHintTextColor(Color.rgb(255, 255, 255))
-        vgsTextView.addTransformationRegex("(\\d{4})(\\d{4})(\\d{4})(\\d{4})".toRegex(), "$1 $2 $3 $4")
+
+        if(id == "pan"){
+            // format data in 'XXXX XXXX XXXX XXXX' format
+            vgsTextView.addTransformationRegex("(\\d{4})(\\d{4})(\\d{4})(\\d{4})".toRegex(), "$1 $2 $3 $4")
+        }
+        else if (id == "expireDate"){
+            // format data in 'DD/YY' format
+            vgsTextView.addTransformationRegex("(\\bJAN\\b)".toRegex(),"01")
+            vgsTextView.addTransformationRegex("(\\bFEB\\b)".toRegex(),"02")
+            vgsTextView.addTransformationRegex("(\\bMAR\\b)".toRegex(),"03")
+            vgsTextView.addTransformationRegex("(\\bAPR\\b)".toRegex(),"04")
+            vgsTextView.addTransformationRegex("(\\bMAY\\b)".toRegex(),"05")
+            vgsTextView.addTransformationRegex("(\\bJUN\\b)".toRegex(),"06")
+            vgsTextView.addTransformationRegex("(\\bJUL\\b)".toRegex(),"07")
+            vgsTextView.addTransformationRegex("(\\bAUG\\b)".toRegex(),"08")
+            vgsTextView.addTransformationRegex("(\\bSEP\\b)".toRegex(),"09")
+            vgsTextView.addTransformationRegex("(\\bOCT\\b)".toRegex(),"10")
+            vgsTextView.addTransformationRegex("(\\bNOV\\b)".toRegex(),"11")
+            vgsTextView.addTransformationRegex("(\\bDEC\\b)".toRegex(),"12")
+            vgsTextView.addTransformationRegex("(\\d{2})\\-(\\d{2})\\-(\\d{2})(\\d{2})".toRegex(),"$2/$4")
+        }
         vgsShow.subscribe(vgsTextView)
         methodChannel.setMethodCallHandler(this)
     }
