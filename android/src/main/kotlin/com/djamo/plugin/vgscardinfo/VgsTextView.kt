@@ -14,6 +14,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.platform.PlatformView
 import android.graphics.Color
+import android.os.Build
 
 internal class VgsTextView(
         context: Context,
@@ -54,7 +55,8 @@ internal class VgsTextView(
         vgsTextView = VGSTextView(context)
         vgsTextView.setContentPath(id)
         vgsTextView.setHint("...")
-        vgsTextView.setBackgroundColor(Color.parseColor("#ffffff"));
+        vgsTextView.setTextColor(Color.BLACK)
+        vgsTextView.setBackgroundColor(Color.TRANSPARENT)
         //vgsTextView.setHintTextColor(Color.rgb(255, 255, 255))
 
         if(id == "pan"){

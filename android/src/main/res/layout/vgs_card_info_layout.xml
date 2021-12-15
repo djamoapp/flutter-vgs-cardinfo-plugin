@@ -57,14 +57,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8px"
-                android:fontFamily="@font/futura_pt_medium"
                 android:text="Numéro de carte"
                 android:textColor="@color/app_grey_color"
                 android:textSize="15dp" />
 
             <com.verygoodsecurity.vgsshow.widget.VGSTextView
                 android:id="@+id/PanField"
-                style="@style/MediumTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:contentPath="pan"
@@ -115,20 +113,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8px"
-                android:fontFamily="@font/futura_pt_medium"
                 android:text="Date d’expiration"
                 android:textColor="@color/app_grey_color"
                 android:textSize="15dp" />
 
             <com.verygoodsecurity.vgsshow.widget.VGSTextView
                 android:id="@+id/ExpiryDateField"
-                style="@style/MediumTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:contentPath="expireDate"
                 app:gravity="left"
                 app:hint="..."
                 app:textColor="@android:color/black"
+                android:forceDarkAllowed="false"
                 app:textSize="19dp">
 
             </com.verygoodsecurity.vgsshow.widget.VGSTextView>
@@ -146,14 +143,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8px"
-                android:fontFamily="@font/futura_pt_medium"
                 android:text="CVV"
                 android:textColor="@color/app_grey_color"
                 android:textSize="15dp" />
 
             <com.verygoodsecurity.vgsshow.widget.VGSTextView
                 android:id="@+id/CVVField"
-                style="@style/MediumTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:contentPath="cvv"
