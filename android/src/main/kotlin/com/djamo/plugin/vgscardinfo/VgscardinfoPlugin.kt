@@ -25,6 +25,7 @@ class VgscardinfoPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+    applicationContext = null;
     channel.setMethodCallHandler(null)
   }
 }
