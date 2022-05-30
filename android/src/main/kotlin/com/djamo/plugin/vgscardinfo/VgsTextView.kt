@@ -17,7 +17,7 @@ import android.graphics.Color
 import android.os.Build
 
 internal class VgsTextView(
-        context: Context,
+        context: Context?,
         messenger: BinaryMessenger?,
         id: Int,
         vgsParams: Map<String?, Any?>?
@@ -28,7 +28,7 @@ internal class VgsTextView(
     var fieldId = vgsParams!!.get("id")!!.toString()
 
     private val vgsShow: VGSShow =
-            VGSShow.Builder(context, vaultId)
+            VGSShow.Builder(context!!, vaultId)
                     .setEnvironment(
                             if (environment == "live") VGSEnvironment.Live()
                             else VGSEnvironment.Sandbox()
@@ -38,7 +38,7 @@ internal class VgsTextView(
 
     protected val methodChannel =
             MethodChannel(
-                    messenger,
+                    messenger!!,
                     "vgstextview_$fieldId".also { Log.d("Test", it) }
             )
 
@@ -52,7 +52,7 @@ internal class VgsTextView(
 
     init {
         var id = vgsParams!!.get("id")!!.toString()
-        vgsTextView = VGSTextView(context)
+        vgsTextView = VGSTextView(context!!)
         vgsTextView.setContentPath(id)
         vgsTextView.setHint("...")
         vgsTextView.setTextColor(Color.BLACK)

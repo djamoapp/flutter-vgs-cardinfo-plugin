@@ -8,7 +8,7 @@ import io.flutter.plugin.platform.PlatformViewFactory
 class VgsTextViewFactory(private val messenger: BinaryMessenger? = null) :
         PlatformViewFactory(StandardMessageCodec.INSTANCE) {
 
-    override fun create(context: Context, id: Int, args: Any?): PlatformView {
+    override fun create(context: Context?, id: Int, args: Any?): PlatformView {
         val vgsParams = args as Map<String?, Any?>?
         return VgsTextView(context, messenger, id, vgsParams)
     }
