@@ -18,7 +18,7 @@ import com.verygoodsecurity.vgsshow.widget.VGSTextView
 import io.flutter.plugin.platform.PlatformView
 
 
-internal class VsCardInfoView(context: Context, id: Int, creationParams: Map<String?, Any?>?) : PlatformView {
+internal class VsCardInfoView(context: Context?, id: Int, creationParams: Map<String?, Any?>?) : PlatformView {
 
     private val rootView: View = LayoutInflater.from(context).inflate(R.layout.vgs_card_info_layout, null)
 
@@ -32,7 +32,7 @@ internal class VsCardInfoView(context: Context, id: Int, creationParams: Map<Str
     private val env : String = creationParams!!.get("environment")!!.toString()
 
     // Get Vgs init
-    private val vgsShow : VGSShow = VGSShow.Builder(context, vgsVaultId)
+    private val vgsShow : VGSShow = VGSShow.Builder(context!!, vgsVaultId)
             .setEnvironment(
                     if(env == "live") VGSEnvironment.Live()
                     else
@@ -54,8 +54,8 @@ internal class VsCardInfoView(context: Context, id: Int, creationParams: Map<Str
     private  val cvvTextView = rootView.findViewById<TextView>(R.id.CVVTextView)
 
     // Get TypeFaces
-    private val futuraPTBook: Typeface = ResourcesCompat.getFont(context, R.font.futura_pt_book)!!;
-    private val futuraPTMedium: Typeface = ResourcesCompat.getFont(context, R.font.futura_pt_medium)!!;
+    private val futuraPTBook: Typeface = ResourcesCompat.getFont(context!!, R.font.futura_pt_book)!!;
+    private val futuraPTMedium: Typeface = ResourcesCompat.getFont(context!!, R.font.futura_pt_medium)!!;
 
     override fun getView(): View {
         return rootView
